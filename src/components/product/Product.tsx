@@ -15,7 +15,7 @@ export const Product: React.FC<any> = (props): any => {
         {/* <button onClick={() => { props.addToCart(props.product.data) }} className="add-to-cart">
             <img src={AddToCart} className="add-to-cart-img" ></img>
         </button> */}
-       {props.isAdmin &&  <button className="add-to-cart" onClick={()=>{window.location.href=`/souldclub/#/add/${props.product.id}`}}>editar</button>}
+       {props.isAdmin &&  <button className="add-to-cart" onClick={()=>{window.location.href=`/soul-club/#/add/${props.product.id}`}}>editar</button>}
         {/* <div className="cuotas"> {props.product.promo}</div> */}
         <button className="add-to-cart" onClick={()=>props.addToCart(props.cart.concat(props.product.data))}> add </button>
     </div>
