@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/soul-club/static/css/main.c3356d6a.css",
+    "main.js": "/soul-club/static/js/main.fc92c22f.js",
+    "static/js/787.000bac07.chunk.js": "/soul-club/static/js/787.000bac07.chunk.js",
+    "static/media/c1.jpg": "/soul-club/static/media/c1.09fa83bfcb46c4f7fb6e.jpg",
+    "static/media/c3.jpg": "/soul-club/static/media/c3.cf3efa23b5030a2bc916.jpg",
+    "static/media/c2.jpg": "/soul-club/static/media/c2.6c3964fa2ce366eabda7.jpg",
+    "static/media/whatsapp-logo.png": "/soul-club/static/media/whatsapp-logo.288c668ccb8033e17ce1.png",
+    "static/media/soul-club-logo-1.png": "/soul-club/static/media/soul-club-logo-1.7f756fec2be586b387e2.png",
+    "static/media/Arrow-down.svg": "/soul-club/static/media/Arrow-down.6722e7abac9e30b021bb4af79228949c.svg",
+    "index.html": "/soul-club/index.html",
+    "main.c3356d6a.css.map": "/soul-club/static/css/main.c3356d6a.css.map",
+    "main.fc92c22f.js.map": "/soul-club/static/js/main.fc92c22f.js.map",
+    "787.000bac07.chunk.js.map": "/soul-club/static/js/787.000bac07.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c3356d6a.css",
+    "static/js/main.fc92c22f.js"
+  ]
+}
