@@ -10,7 +10,8 @@ export const Header: React.FC<any> = (props): any => {
  
     return <div>
         <div className="header-container">
-            <div className="logo"><img className="soul-club-logo" src={logo}></img>
+            <div className="logo">
+                <img className="soul-club-logo" src={logo}></img>
                 <a href="https://www.instagram.com/soul.club_/"><img className="inst-logo" src={InstagramLogo}></img></a>
                 
             </div>

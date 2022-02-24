@@ -15,12 +15,12 @@ import { useParams } from "react-router-dom";
 import img1 from "../../assets/c1.jpg"
 import img2 from "../../assets/c2.jpg"
 import img3 from "../../assets/c3.jpg"
-
+import loading from "../../assets/loading.gif"
 
 export const Home = () => {
-  const imgs = [img1,img2,img3]
+  const imgs = [img1, img2, img3]
 
-  const [productsApi, setProductsApi] = useState([{ id: "", data: {} }])
+  const [productsApi, setProductsApi] = useState(null)
   const [minMaxPrice, setMinMaxPrice] = useState({ min: "", max: "" });
   const [baners, setBaners] = useState([]);
   // const ej  = async () =>{ await addDoc(collection(db,"productos"),{})}
@@ -28,45 +28,64 @@ export const Home = () => {
   useEffect(() => {
     /* eslint-disable */
     onSnapshot(collection(db, "productos"), (snapshot) => setProductsApi(snapshot.docs.map(doc => { return { data: doc.data(), id: doc.id } })));
-    onSnapshot(collection(db, "baners"), (snapshot) =>  setBaners(snapshot.docs.map(doc => doc.data())) );
+    onSnapshot(collection(db, "baners"), (snapshot) => setBaners(snapshot.docs.map(doc => doc.data())));
   }, [])
   const [type, setType] = useState("all");
   const [cart, setCart] = useState([])
-  const {pass} = useParams()
+  const { pass } = useParams()
   const [isAdmin, setIsAdmin] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   useEffect(() => {
-      console.log(pass,"pass")
-      setIsAdmin(pass==="camilasantander")
-    
+    console.log(pass, "pass")
+    setIsAdmin(pass === "camilasantander")
+
   }, []);
-  
+
+
+  // const toBase64 = (files) => {
+  //   Array.from(files).forEach(file => {
+  //       var render = new FileReader();
+  //       render.readAsDataURL(file);
+  //       render.onload = function () {
+  //           var b64 = render.result
+  //           setImgB64(b64)
+  //       }
+  //   })
+  // }
+    
   return (
     <div className='app'>
-      <Header setOpenCart={setOpenCart} cart={cart}/>
+      {!productsApi? <div className="loading">
+        <img className="loading-gif" src={loading}></img>
+      </div>:
+      <div>
+      <Header setOpenCart={setOpenCart} cart={cart} />
       <div className="carousel-container" ></div>
-      <div ><Carouser imgs={baners} /></div>
+      <div >
+        {/* {isAdmin &&  <input type="file" onChange={(e) => toBase64(e.target.files)}></input>} */}
+        <Carouser imgs={baners} />
+      </div>
       {/* <div className="most-seleing">Mas vendidos</div> */}
       <Filter setType={setType} minMaxPrice={minMaxPrice} setMinMaxPrice={setMinMaxPrice} />
       <div className="separator-filters">
         {/* <button className="more-filters-buttons"><img className="arrow-down" src={arrow}></img></button> */}
-        </div>
+      </div>
       <div className="products-list">
         {productsApi.map((product) =>
 
-          (product.data.price >= minMaxPrice.min || minMaxPrice.min === "") && 
-          (product.data.price <= minMaxPrice.max || minMaxPrice.max === "") && 
-          (type === "all" || product.data.type === type) ? 
-          <Product cart={cart} addToCart={setCart} product={product} isAdmin={isAdmin}>
-          </Product> : null
+          (product.data.price >= minMaxPrice.min || minMaxPrice.min === "") &&
+            (product.data.price <= minMaxPrice.max || minMaxPrice.max === "") &&
+            (type === "all" || product.data.type === type) ?
+            <Product cart={cart} addToCart={setCart} product={product} isAdmin={isAdmin}>
+            </Product> : null
         )}
-        {cart.length>0 && openCart && <FloatCart closeCart={()=>{setOpenCart(false)}} product={cart} />}
-  
+        {cart.length > 0 && openCart && <FloatCart closeCart={() => { setOpenCart(false) }} product={cart} />}
+
 
       </div>
+      </div>
 
-
-
+}
     </div>
   );
 }
